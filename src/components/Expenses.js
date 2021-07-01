@@ -18,6 +18,10 @@ const onUserSelectDiffYearHandler =(userEnteredYear) =>{
 
 
 }
+const filtered_list={
+
+
+};
 
   return (
     <div>
@@ -25,7 +29,8 @@ const onUserSelectDiffYearHandler =(userEnteredYear) =>{
     
     <Card className="expenses">
     <ExpensesFilter onUserSelectYear={onUserSelectDiffYearHandler}></ExpensesFilter>
-     {props.items.map((expense1) =>( <ExpenseItem title={expense1.title} amount={expense1.amount} date={expense1.date} />))};
+
+     {props.items.filter(expense1 => expense1.date.getFullYear() == yearSelected ).map((expense1) =>( <ExpenseItem title={expense1.title} amount={expense1.amount} date={expense1.date} />))};
    </Card>
     </div>
   );
